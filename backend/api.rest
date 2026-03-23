@@ -1,0 +1,94 @@
+### CatatanKu — REST API Testing
+### Gunakan ekstensi "REST Client" di VS Code untuk menjalankan request ini
+### Install: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+
+# ============================================================
+#  HEALTH CHECK
+# ============================================================
+
+### Cek status server
+GET {{baseUrl}}/api/health
+
+
+# ============================================================
+#  GET — Ambil Semua Catatan
+# ============================================================
+
+### GET semua catatan
+GET {{baseUrl}}/api/notes
+Content-Type: {{contentType}}
+
+
+# ============================================================
+#  GET — Ambil Satu Catatan
+# ============================================================
+
+### GET catatan by ID (ganti angka sesuai id yang ada)
+GET {{baseUrl}}/api/notes/1
+Content-Type: {{contentType}}
+
+
+# ============================================================
+#  POST — Tambah Catatan Baru
+# ============================================================
+
+### POST buat catatan baru
+POST {{baseUrl}}/api/notes
+Content-Type: {{contentType}}
+
+{
+  "judul": "Catatan Baru dari REST Client",
+  "isi": "Ini adalah isi catatan yang dibuat menggunakan file api.rest di VS Code."
+}
+
+
+### POST — validasi gagal (body kosong)
+POST {{baseUrl}}/api/notes
+Content-Type: {{contentType}}
+
+{
+  "judul": "",
+  "isi": ""
+}
+
+
+# ============================================================
+#  PUT — Update Catatan
+# ============================================================
+
+### PUT update catatan by ID
+PUT {{baseUrl}}/api/notes/1
+Content-Type: {{contentType}}
+
+{
+  "judul": "Judul Catatan yang Sudah Diperbarui",
+  "isi": "Isi catatan ini sudah diedit menggunakan metode PUT."
+}
+
+
+### PUT — ID tidak ditemukan
+PUT {{baseUrl}}/api/notes/99999
+Content-Type: {{contentType}}
+
+{
+  "judul": "Test Not Found",
+  "isi": "Seharusnya menghasilkan error 404."
+}
+
+
+# ============================================================
+#  DELETE — Hapus Catatan
+# ============================================================
+
+### DELETE catatan by ID
+DELETE {{baseUrl}}/api/notes/2
+Content-Type: {{contentType}}
+
+
+### DELETE — ID tidak ditemukan
+DELETE {{baseUrl}}/api/notes/99999
+Content-Type: {{contentType}}
