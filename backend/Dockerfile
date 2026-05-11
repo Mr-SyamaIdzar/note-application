@@ -1,9 +1,9 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY . .
+COPY backend/ .
 RUN npm install
-EXPOSE 3000
-CMD ["node", "index.js"]
+EXPOSE 5000
+CMD ["node", "server.js"]
 
 # Notes : 
 # FROM node:20-alpine
