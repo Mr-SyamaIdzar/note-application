@@ -1,5 +1,5 @@
-# Menggunakan runtime python39 lebih mudah untuk melayani file statis murni tanpa perlu package.json
-runtime: python39
+# Menggunakan runtime python311 lebih mudah untuk melayani file statis murni tanpa perlu package.json
+runtime: python311
 service: default
 
 automatic_scaling:
