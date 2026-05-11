@@ -38,14 +38,18 @@ app.use("/api/notes", noteRoutes); // ✅ benar
 // Prisma tidak perlu sync manual, tapi kita tetap test koneksi dulu
 const port = process.env.PORT || 3000;
 
+// Cloud Run merekomendasikan binding eksplisit ke 0.0.0.0
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
+
 prisma
   .$connect()
   .then(() => {
     console.log("Database connected");
-    // Cloud Run merekomendasikan binding eksplisit ke 0.0.0.0
-    app.listen(port, '0.0.0.0', () => console.log(`Server running on port ${port}`));
   })
   .catch((err) => {
     console.error("Failed to connect to database:", err);
-    process.exit(1);
+    // Jangan langsung di exit agar Cloud Run tetap mendeteksi server berjalan
+    // sehingga Anda bisa melihat log error koneksinya dengan jelas di console
   });
