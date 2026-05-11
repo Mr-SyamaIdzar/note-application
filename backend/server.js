@@ -13,9 +13,8 @@ const app = express();
 app.use(
   cors({
     origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Jika butuh kirim cookie/session
-  }),
+    methods: ["GET", "POST", "PUT", "DELETE"]
+  })
 );
 
 // Middleware untuk parsing JSON
