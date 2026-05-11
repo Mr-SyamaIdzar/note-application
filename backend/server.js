@@ -32,7 +32,7 @@ app.use("/api/notes", noteRoutes); // ✅ benar
 
 // Koneksi Database dan Jalankan Server
 // dulu: sequelize.sync().then(() => app.listen(...))
-// Prisma tidak perlu sync manual, tapi kita tetap test koneksi dulu
+// Prisma tidak perlu sync manual, tapi kita tetap test koneksi dulu test
 const port = process.env.PORT || 3000;
 
 // Cloud Run merekomendasikan binding eksplisit ke 0.0.0.0
