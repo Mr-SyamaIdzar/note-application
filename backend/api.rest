@@ -2,7 +2,7 @@
 ### Gunakan ekstensi "REST Client" di VS Code untuk menjalankan request ini
 ### Install: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 
-@baseUrl = http://localhost:3000
+@baseUrl = https://be-rest-805566040091.us-central1.run.app/
 @contentType = application/json
 
 
