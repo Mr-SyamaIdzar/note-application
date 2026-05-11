@@ -8,14 +8,11 @@ const noteRoutes = require("./routes/noteRoutes");
 // Inisialisasi Express
 const app = express();
 
-// Izinkan origin frontend lokal yang umum dipakai saat development
+// Izinkan origin frontend dari mana saja (semua origin)
+// agar frontend App Engine bisa memanggil backend ini tanpa terkena error CORS.
 app.use(
   cors({
-    origin: [
-      "http://localhost",
-      "http://localhost:5173",
-      "http://127.0.0.1:5500",
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Jika butuh kirim cookie/session
   }),
